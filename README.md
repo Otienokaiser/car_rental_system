@@ -1,6 +1,3 @@
-# car_rental_sysem
-Web based application for renting motor vehicles
-
 # Vehicle Renting System
 
 Welcome to the Vehicle Renting System project! This README will guide you through setting up the project on your local machine and collaborating using Git and GitHub.
@@ -21,13 +18,13 @@ Welcome to the Vehicle Renting System project! This README will guide you throug
 2. Run this command to copy the project to your computer:
    
 ```bash
-git clone https://github.com/Otienokaiser/car_rental_sysem.git
+git clone https://github.com/Otienokaiser/car_rental_system.git
 ````
 
 3. Move into the project folder:
    
 ```bash
-cd car_rental_sysem
+cd car_rental_system
 ````
 
 🌿 Creating and Working on a Feature Branch
