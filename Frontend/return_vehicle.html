@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Return Vehicle - Vehicle Rental</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header>Vehicle Rental Service - Return a Vehicle</header>
+
+<main>
+  <form id="return-form" method="POST" action="/api/return">
+    <label for="rental_id">Select Rental:</label><br />
+    <select id="rental_id" name="rental_id" required>
+      <!-- Active rentals populated dynamically -->
+    </select><br /><br />
+
+    <button type="submit">Return Vehicle</button>
+  </form>
+</main>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5;
+}
+
+.container{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    place-items: center;
+}
+
+.heading{
+    font-size: 5rem;
+    text-transform: uppercase;
+    color: #555;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}

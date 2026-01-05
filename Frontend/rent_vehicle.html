@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rent Vehicle - Vehicle Rental</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header>Vehicle Rental Service - Rent a Vehicle</header>
+
+<main>
+  <form id="rent-form" method="POST" action="/api/rent">
+    <label for="vehicle_id">Select Vehicle:</label><br />
+    <select id="vehicle_id" name="vehicle_id" required>
+      <!-- Vehicle options populated dynamically -->
+    </select><br /><br />
+
+    <label for="start_date">Start Date:</label><br />
+    <input type="date" id="start_date" name="start_date" required /><br /><br />
+
+    <label for="end_date">End Date:</label><br />
+    <input type="date" id="end_date" name="end_date" required /><br /><br />
+
+    <button type="submit">Rent Now</button>
+  </form>
+</main>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>

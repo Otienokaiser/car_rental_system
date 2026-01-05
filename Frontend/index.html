@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="script.js" defer></script>
+    <title>Vehicle Rental Service</title>
+    <style>
+        /* Basic professional styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: #f4f7f8;
+            color: #333;
+        }
+        header {
+            background-color: #004aad;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .vehicles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+            gap: 1.5rem;
+        }
+        .vehicle-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgb(0 0 0 / 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .vehicle-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .vehicle-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .vehicle-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .vehicle-desc {
+            flex-grow: 1;
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+        .vehicle-price {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #004aad;
+        }
+        .no-vehicles {
+            font-size: 1.3rem;
+            color: #666;
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Vehicle Rental Service</h1>
+        <div class="car-models">Car Models</div>
+        <div class="car-images">
+            <img src="images\porsche_911.jpg">
+        </div>
+        <div class="car-properties">Car Properties</div>
+        <div class="reserve-btn">Reserve Now</div>
+    </div>
+
+
+<header>Vehicle Rental Service</header>
+
+<main>
+    <div id="vehicles" class="vehicles-container">
+        <!-- Vehicles will be loaded here by JS -->
+    </div>
+    <div id="no-vehicles" class="no-vehicles" style="display:none;">
+        No vehicles added yet.
+    </div>
+</main>
+
+<script>
+    async function loadVehicles() {
+        const vehiclesContainer = document.getElementById('vehicles');
+        const noVehiclesMessage = document.getElementById('no-vehicles');
+
+        try {
+            const response = await fetch('/api/vehicles'); // Backend API endpoint
+            if (!response.ok) throw new Error('Failed to fetch vehicles');
+
+            const vehicles = await response.json();
+
+            if (vehicles.length === 0) {
+                noVehiclesMessage.style.display = 'block';
+                vehiclesContainer.style.display = 'none';
+                return;
+            }
+
+            noVehiclesMessage.style.display = 'none';
+            vehiclesContainer.style.display = 'grid';
+
+            // Clear old content
+            vehiclesContainer.innerHTML = '';
+
+            vehicles.forEach(vehicle => {
+                const vehicleDiv = document.createElement('div');
+                vehicleDiv.classList.add('vehicle-card');
+
+                vehicleDiv.innerHTML = `
+                    <img src="${vehicle.images[0]}" alt="${vehicle.name}" />
+                    <div class="vehicle-content">
+                        <div class="vehicle-name">${vehicle.name}</div>
+                        <div class="vehicle-desc">${vehicle.description}</div>
+                        <div class="vehicle-price">Price: ${vehicle.price}</div>
+                    </div>
+                `;
+
+                vehiclesContainer.appendChild(vehicleDiv);
+            });
+
+        } catch (error) {
+            vehiclesContainer.innerHTML = `<p style="color:red;">Error loading vehicles.</p>`;
+            noVehiclesMessage.style.display = 'none';
+            console.error(error);
+        }
+    }
+
+    window.onload = loadVehicles;
+</script>
+
+</body>
+</html>

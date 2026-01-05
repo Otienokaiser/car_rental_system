@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - Vehicle Rental</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header>Admin Dashboard - Vehicle Rental Service</header>
+
+<main>
+  <h2>Upload New Vehicle</h2>
+  <form id="upload-form" enctype="multipart/form-data" method="POST" action="/api/admin/upload_vehicle">
+    <label for="name">Vehicle Name:</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
+
+    <label for="description">Description:</label><br />
+    <textarea id="description" name="description" rows="3" required></textarea><br /><br />
+
+    <label for="price_per_day">Price Per Day (KES):</label><br />
+    <input type="number" id="price_per_day" name="price_per_day" required min="0" /><br /><br />
+
+    <label for="price_per_month">Price Per Month (KES):</label><br />
+    <input type="number" id="price_per_month" name="price_per_month" required min="0" /><br /><br />
+
+    <label>Upload exactly 4 Images (max 3MB each):</label><br />
+    <input type="file" name="images" accept="image/*" multiple required /><br /><br />
+
+    <button type="submit">Upload Vehicle</button>
+  </form>
+</main>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>
